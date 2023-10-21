@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Stint+Ultra+Expanded&display=swap");
+
+body {
+  font-family: "Stint Ultra Expanded", serif;
+  margin: 0;
+  font-size: 1.5rem;
+  background-color: #4b8e25;
+  text-align: center;
+  color: #fdd8a8;
+  position: relative;
+  padding-bottom: 40px;
+}
