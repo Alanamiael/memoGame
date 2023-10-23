@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Modal from "./components/UI/Modal/Modal";
 import Cards from "./components/cards/Cards";
-import "./styles/App.css";
 import StartGame from "./components/startGame/StartGame";
 import CardsBoard from "./components/UI/cardsBoard/CardsBoard";
+import "./styles/App.css";
 
 function App() {
   const [modal, setModal] = useState(true);
@@ -11,7 +11,6 @@ function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
 
-  console.log(cards, turns);
   return (
     <>
       <Modal visible={modal} setVisible={setModal}></Modal>
@@ -20,13 +19,7 @@ function App() {
         setTurns={setTurns}
         setGameStarted={setGameStarted}
       />
-      <CardsBoard>
-        {gameStarted ? (
-          <Cards cards={cards} setCards={setCards} />
-        ) : (
-          <h1>Answers hidden behind this layer </h1>
-        )}
-      </CardsBoard>
+      <CardsBoard cards={cards} setCards={setCards} gameStarted={gameStarted} />
     </>
   );
 }
