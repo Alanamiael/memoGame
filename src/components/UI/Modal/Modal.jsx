@@ -1,4 +1,4 @@
-import cl from "./Modal.module.css";
+import cl from "./Modal.module.scss";
 import closeIcon from "./closeIcon.png";
 
 const Modal = ({ visible, setVisible }) => {
@@ -11,17 +11,17 @@ const Modal = ({ visible, setVisible }) => {
   return (
     <div className={rootClasses.join(" ")} onClick={() => setVisible(false)}>
       <div
-        className={cl.myModalContent}
+        className={cl.modalContent}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="modalContent">
-          <div className="modalHeader">
-            <h2>Rules</h2>
-            <div>
+        <div className={cl.modalContent}>
+          <div className={cl.modalHeader}>
+            <h2 className={cl.h2}>Rules</h2>
+            <div onClick={() => setVisible(false)} className={cl.closeBtn}>
               <img src={closeIcon} alt="close" />
             </div>
           </div>
-          <div className="modalText">
+          <div className={cl.modalText}>
             <p>
               Take in turns flipping 2 cards at a time (by clicking on them)
             </p>
