@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Stint+Ultra+Expanded&display=swap");
+@import "../../../styles/variables";
 
 .modal {
   position: fixed;
@@ -7,7 +8,7 @@
   right: 0;
   left: 0;
   display: none;
-  background: rgba(0, 0, 0, 0.4);
+  @include background-opacity($black, 0.5);
 }
 
 .modalContent {
@@ -22,14 +23,14 @@
   max-height: 100px;
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
-  background: #641f16;
+  background: $brown;
   display: flex;
   justify-content: space-between;
   position: relative;
 }
 
 .h2 {
-  color: #fdd8a8;
+  color: $beige;
   font-family: Stint Ultra Expanded;
   font-size: 40px;
   font-weight: 400;
@@ -55,8 +56,8 @@
 
 .modalText {
   padding: 15px 20px;
-  background-color: #fdd8a8;
-  color: #641f16;
+  background-color: $beige;
+  color: $brown;
   font-size: 18px;
   min-height: 250px;
   display: flex;

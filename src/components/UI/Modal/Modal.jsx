@@ -1,4 +1,4 @@
-import cl from "./Modal.module.css";
+import cl from "./Modal.module.scss";
 import closeIcon from "./closeIcon.png";
 
 const Modal = ({ visible, setVisible }) => {
