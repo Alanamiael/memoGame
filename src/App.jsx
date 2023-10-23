@@ -1,13 +1,26 @@
 import { useState } from "react";
 import Modal from "./components/UI/Modal/Modal";
-import "./App.css";
+import Cards from "./components/cards/Cards";
+import StartGame from "./components/startGame/StartGame";
+import CardsBoard from "./components/UI/cardsBoard/CardsBoard";
+import "./styles/App.css";
 
 function App() {
   const [modal, setModal] = useState(true);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [turns, setTurns] = useState(0);
+
   return (
-    <div>
+    <>
       <Modal visible={modal} setVisible={setModal}></Modal>
-    </div>
+      <StartGame
+        setCards={setCards}
+        setTurns={setTurns}
+        setGameStarted={setGameStarted}
+      />
+      <CardsBoard cards={cards} setCards={setCards} gameStarted={gameStarted} />
+    </>
   );
 }
 

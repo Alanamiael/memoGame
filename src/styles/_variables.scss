@@ -1,0 +1,11 @@
+$brown: #641f16;
+$hover: brown;
+$beige: #fdd8a8;
+$green: #4b8e25;
+$black: #000;
+$opacity: 0.4;
+
+@mixin background-opacity($color, $opacity: 0.3) {
+  background: $color;
+  background: rgba($color, $opacity);
+}
