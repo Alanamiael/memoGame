@@ -2,12 +2,11 @@
 @import "./variables";
 
 body {
-  font-family: "Stint Ultra Expanded", serif;
+  text-align: center;
   margin: 0;
+  padding-bottom: 40px;
+  font-family: "Stint Ultra Expanded", serif;
   font-size: 1.5rem;
   background-color: $green;
-  text-align: center;
   color: $beige;
-  position: relative;
-  padding-bottom: 40px;
 }

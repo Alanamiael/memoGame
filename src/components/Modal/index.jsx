@@ -1,5 +1,5 @@
-import cl from "./Modal.module.scss";
 import closeIcon from "./closeIcon.png";
+import cl from "./Modal.module.scss";
 
 const Modal = ({ visible, setVisible }) => {
   const rootClasses = [cl.modal];

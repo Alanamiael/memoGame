@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Stint+Ultra+Expanded&display=swap");
+@import "../../styles/variables";
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: none;
+  @include background-opacity($black, 0.5);
+
+  &.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.modalContentFinished {
+  min-width: 500px;
+  border-radius: 32px;
+  border: none;
+  box-sizing: border-box;
+}
+
+.modalHeader {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  max-height: 100px;
+  padding: 5px 20px;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+  background: $brown;
+}
+
+.h2 {
+  color: $beige;
+  font-family: Stint Ultra Expanded;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: -2px;
+}
+
+.closeBtn img {
+  position: absolute;
+  top: 35px;
+  right: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 50px;
+  cursor: pointer;
+}
+
+.modalText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+
+  min-height: 250px;
+  padding: 15px 20px;
+  background-color: $beige;
+  color: $brown;
+  font-size: 18px;
+}
