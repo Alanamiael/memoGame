@@ -1,21 +1,47 @@
-import { useState, useEffect, useCallback } from "react";
+import {
+  FC,
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 
-import Card from "../Card";
-import FinishedGameModal from "../FinishedGameModal";
+import Card from '../Card';
+import FinishedGameModal from '../FinishedGameModal';
+import { CardImg } from '../StartGameButton/helpers';
 
-import cl from "./Cards.module.scss";
+import cl from './Cards.module.scss';
 
-const Cards = ({ cards, setCards, setTurns, setGameStarted }) => {
-  const [firstChoice, setFirstChoice] = useState(null);
-  const [secondChoice, setSecondChoice] = useState(null);
+interface CardsProps {
+  cards: CardImg[];
+  setCards: Dispatch<SetStateAction<CardImg[]>>;
+  setTurns: Dispatch<SetStateAction<number>>;
+  setGameStarted: Dispatch<SetStateAction<boolean>>;
+}
+
+const Cards: FC<CardsProps> = ({
+  cards,
+  setCards,
+  setTurns,
+  setGameStarted,
+}) => {
+  const [firstChoice, setFirstChoice] = useState<CardImg | null>(null);
+  const [secondChoice, setSecondChoice] = useState<CardImg | null>(null);
   const [disabled, setDisabled] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
-
-  const handleChoice = (card) => {
-    firstChoice ? setSecondChoice(card) : setFirstChoice(card);
+  const handleChoice = (card: CardImg): void => {
+    return firstChoice ? setSecondChoice(card) : setFirstChoice(card);
   };
 
-  const setMatchCards = () => {
+  const resetTurn = useCallback(() => {
+    setFirstChoice(null);
+    setSecondChoice(null);
+    setTurns((prevTurns) => prevTurns + 1);
+    setDisabled(false);
+  }, [setTurns]);
+
+  useEffect(() => {
     if (firstChoice && secondChoice) {
       setDisabled(true);
       if (firstChoice.name === secondChoice.name) {
@@ -25,7 +51,7 @@ const Cards = ({ cards, setCards, setTurns, setGameStarted }) => {
               return { ...card, matched: true };
             }
             return card;
-          })
+          }),
         );
 
         resetTurn();
@@ -33,23 +59,12 @@ const Cards = ({ cards, setCards, setTurns, setGameStarted }) => {
         setTimeout(() => resetTurn(), 1500);
       }
     }
-  };
-
-  useEffect(() => {
-    setMatchCards();
-  }, [firstChoice, secondChoice]);
-
-  const resetTurn = () => {
-    setFirstChoice(null);
-    setSecondChoice(null);
-    setTurns((prevTurns) => prevTurns + 1);
-    setDisabled(false);
-  };
+  }, [firstChoice, resetTurn, secondChoice, setCards]);
 
   const isFlipped = useCallback(
-    (card) =>
+    (card: CardImg) =>
       card === firstChoice || card === secondChoice || card.matched === true,
-    [firstChoice, secondChoice]
+    [firstChoice, secondChoice],
   );
   return (
     <div className={cl.cards__grid}>

@@ -1,17 +1,26 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, FC, Dispatch, SetStateAction } from 'react';
 
-import StartGameButton from "../StartGameButton";
+import StartGameButton from '../StartGameButton';
+import { CardImg } from '../StartGameButton/helpers';
 
-import closeIcon from "../Modal/closeIcon.png";
-import cl from "./FinishedGameModal.module.scss";
+import closeIcon from '../Modal/closeIcon.png';
+import cl from './FinishedGameModal.module.scss';
 
-const FinishedGameModal = ({
+interface FinishedGameModalProps {
+  cards: CardImg[];
+  gameFinished: boolean;
+  setGameFinished: Dispatch<SetStateAction<boolean>>;
+  setCards: Dispatch<SetStateAction<CardImg[]>>;
+  setTurns: Dispatch<SetStateAction<number>>;
+  setGameStarted: Dispatch<SetStateAction<boolean>>;
+}
+
+const FinishedGameModal: FC<FinishedGameModalProps> = ({
   cards,
   gameFinished,
   setGameFinished,
   setCards,
   setTurns,
-
   setGameStarted,
 }) => {
   const rootClasses = [cl.modal];
@@ -34,24 +43,30 @@ const FinishedGameModal = ({
     } else {
       setGameFinished(false);
     }
-  }, [isAllCardsMatched]);
+  }, [isAllCardsMatched, setGameFinished]);
 
   if (gameFinished) {
     rootClasses.push(cl.active);
   }
   return (
     <div
-      className={rootClasses.join(" ")}
+      className={rootClasses.join(' ')}
       onClick={() => setGameFinished(false)}
+      role="presentation"
     >
       <div
         className={cl.modalContentFinished}
         onClick={(event) => event.stopPropagation()}
+        role="presentation"
       >
         <div className={cl.modalContentFinished}>
           <div className={cl.modalHeader}>
             <h2 className={cl.h2}>Congratulations!!!</h2>
-            <div onClick={() => setGameFinished(false)} className={cl.closeBtn}>
+            <div
+              onClick={() => setGameFinished(false)}
+              className={cl.closeBtn}
+              role="presentation"
+            >
               <img src={closeIcon} alt="close" />
             </div>
           </div>

@@ -1,23 +1,39 @@
-import closeIcon from "./closeIcon.png";
-import cl from "./Modal.module.scss";
+import { FC, Dispatch, SetStateAction } from 'react';
 
-const Modal = ({ visible, setVisible }) => {
+import closeIcon from './closeIcon.png';
+import cl from './Modal.module.scss';
+
+interface ModalProps {
+  modal: boolean;
+  setModal: Dispatch<SetStateAction<boolean>>;
+}
+
+const Modal: FC<ModalProps> = ({ modal, setModal }) => {
   const rootClasses = [cl.modal];
 
-  if (visible) {
+  if (modal) {
     rootClasses.push(cl.active);
   }
 
   return (
-    <div className={rootClasses.join(" ")} onClick={() => setVisible(false)}>
+    <div
+      className={rootClasses.join(' ')}
+      onClick={() => setModal(false)}
+      role="presentation"
+    >
       <div
         className={cl.modalContent}
         onClick={(event) => event.stopPropagation()}
+        role="presentation"
       >
         <div className={cl.modalContent}>
           <div className={cl.modalHeader}>
             <h2 className={cl.h2}>Rules</h2>
-            <div onClick={() => setVisible(false)} className={cl.closeBtn}>
+            <div
+              onClick={() => setModal(false)}
+              className={cl.closeBtn}
+              role="presentation"
+            >
               <img src={closeIcon} alt="close" />
             </div>
           </div>

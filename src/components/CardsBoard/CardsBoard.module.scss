@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 .board {
   display: flex;
   align-items: center;
@@ -6,8 +6,7 @@
 
   max-width: 1200px;
   min-height: 70vh;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   border-radius: 40px;
   text-align: center;
   background-color: $brown;
