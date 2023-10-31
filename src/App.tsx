@@ -1,21 +1,22 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import Modal from "./components/Modal";
-import StartGameButton from "./components/StartGameButton";
-import CardsBoard from "./components/CardsBoard";
-import Turns from "./components/Turns";
+import Modal from './components/Modal';
+import StartGameButton from './components/StartGameButton';
+import CardsBoard from './components/CardsBoard';
+import Turns from './components/Turns';
 
-import "./styles/App.css";
+import './styles/App.css';
+import { CardImg } from './components/StartGameButton/helpers';
 
 function App() {
   const [modal, setModal] = useState(true);
   const [gameStarted, setGameStarted] = useState(false);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState<CardImg[]>([]);
   const [turns, setTurns] = useState(0);
 
   return (
     <>
-      <Modal visible={modal} setVisible={setModal}></Modal>
+      <Modal modal={modal} setModal={setModal} />
       <StartGameButton
         setCards={setCards}
         setTurns={setTurns}
@@ -28,7 +29,6 @@ function App() {
         setGameStarted={setGameStarted}
         gameStarted={gameStarted}
         setTurns={setTurns}
-        turns={turns}
       />
     </>
   );
