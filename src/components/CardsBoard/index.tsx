@@ -10,7 +10,6 @@ interface CardsBoardProps {
   setCards: Dispatch<SetStateAction<CardImg[]>>;
   gameStarted: boolean;
   setTurns: Dispatch<SetStateAction<number>>;
-
   setGameStarted: Dispatch<SetStateAction<boolean>>;
 }
 const CardsBoard: FC<CardsBoardProps> = ({
@@ -18,7 +17,6 @@ const CardsBoard: FC<CardsBoardProps> = ({
   setCards,
   gameStarted,
   setTurns,
-
   setGameStarted,
 }) => {
   return (
